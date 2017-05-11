@@ -13,7 +13,11 @@ public class DoublyLinkedListTest {
 		list.add(33);
 		list.add(44);
 		list.add(55);
-		
+		Iterator<Integer> it = list.iterator();
+		while(it.hasNext()){
+			int i = it.next(); //auto unboxing
+			System.out.println("====>"+i);
+		}
 		System.out.println("삭제된 원소는: "+list.remove(0));
 		int count = list.size();
 		System.out.println("리스트 크기: "+count);

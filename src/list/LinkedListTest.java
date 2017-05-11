@@ -13,6 +13,12 @@ public class LinkedListTest {
 		list.add(55);
 		list.add(4,1000);
 		
+		Iterator<Integer> it = list.iterator();
+		while(it.hasNext()){
+			int i = it.next(); //auto unboxing
+			System.out.println("====>"+i);
+		}
+		
 		//System.out.println("removed ele:"+list.remove(1));
 		
 		int count = list.size();

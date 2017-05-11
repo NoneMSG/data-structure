@@ -1,6 +1,7 @@
 package list;
 
 
+
 public class CircularLinkedList<E> implements List<E> {
 	private int size = 0;
 	private Node<E> tail = null;
@@ -170,15 +171,40 @@ public class CircularLinkedList<E> implements List<E> {
 	}
 	
 	public E next(){
-		
-		return null;
+		if(tail.next ==null){
+			return null;
+		}
+		if(pos==null){
+			pos=tail.next;
+		}
+		E data = pos.data;
+		pos = pos.next;
+		return data;
 	}
 
 	@Override
-	public list.Iterator<E> iterator() {
-		// TODO Auto-generated method stub
-		return null;
+	public Iterator<E> iterator() {
+		return new Iterator<E>(){
+			private Node<E> pos=tail.next;
+			private int index=0;
+
+			@Override
+			public boolean hasNext() {
+				
+				return index<size;
+			}
+
+			@Override
+			public E next() {
+				E data = pos.data;
+				pos= pos.next;
+				index++;
+				return data;
+			}
+		};
 	}
+
+	
 
 	
 }

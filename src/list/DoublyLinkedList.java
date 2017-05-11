@@ -163,8 +163,24 @@ public class DoublyLinkedList<E> implements List<E> {
 
 	@Override
 	public Iterator<E> iterator() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Iterator<E>(){
+			private Node<E> pos=head;
+			private int index=0;
+
+			@Override
+			public boolean hasNext() {
+				
+				return index<size;
+			}
+
+			@Override
+			public E next() {
+				E data = pos.data;
+				pos= pos.next;
+				index++;
+				return data;
+			}
+		};
 	}
 
 	

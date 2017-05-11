@@ -2,7 +2,7 @@ package list;
 
 
 public class LinkedList<E> implements List<E> {
-
+	//private Node<E> tail;
 	private Node<E> head;
 	private int size;
 
@@ -12,7 +12,7 @@ public class LinkedList<E> implements List<E> {
 		
 		if (head == null) {
 			head = newNode;
-			//head = tail = newNode;
+			//head = tail = newNode; //tail 채용시
 		} else {
 			Node<E> x = head;
 			while (x.next != null) {
@@ -179,8 +179,25 @@ public class LinkedList<E> implements List<E> {
 
 	@Override
 	public Iterator<E> iterator() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return new Iterator<E>(){
+			private Node<E> pos=head;
+			private int index=0;
+
+			@Override
+			public boolean hasNext() {
+				
+				return index<size;
+			}
+
+			@Override
+			public E next() {
+				E data = pos.data;
+				pos= pos.next;
+				index++;
+				return data;
+			}
+		};
 	}
 
 	
