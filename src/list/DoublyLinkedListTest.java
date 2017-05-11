@@ -13,10 +13,10 @@ public class DoublyLinkedListTest {
 		list.add(33);
 		list.add(44);
 		list.add(55);
-		list.add(0,1000);
-				
+		
+		System.out.println("삭제된 원소는: "+list.remove(0));
 		int count = list.size();
-//		System.out.println("리스트 크기: "+count);
+		System.out.println("리스트 크기: "+count);
 //		
 		//get 연산
 		for(int i = 0 ; i < count ; ++i){
@@ -29,10 +29,10 @@ public class DoublyLinkedListTest {
 //		}
 		
 		System.out.println(Arrays.toString(list.toArray()));
-		list.removeAll();
-		count = list.size();
-		System.out.println("리스트 크기: "+count);
-		System.out.println(Arrays.toString(list.toArray()));
+		//list.removeAll();
+	//	count = list.size();
+		//System.out.println("리스트 크기: "+count);
+	//	System.out.println(Arrays.toString(list.toArray()));
 		
 //		//exception test
 //		try{

@@ -22,7 +22,39 @@ public class DoublyLinkedList<E> implements List<E> {
 
 	@Override
 	public void add(int index, E element) {
-
+		if (size < index) {
+			throw new IndexOutOfBoundsException();
+		}
+		if(index == 0){//head부분 추가
+			Node<E> newNode = new Node<E>(element); //새로운 노드
+			Node<E> x= head; //head
+			head = newNode; // head의 위치에 새로운 노드 추가
+			newNode.next=x; //새로운노드의 다음노드는 이전의 head
+			head.prev = newNode;
+			//System.out.println("head prev:"+head.prev.data);
+		}else if(index==size){
+			add(element);return;
+			
+		}else{
+			Node<E> newNode = new Node<E>(element);
+			//현재위치 찾기
+			Node<E> x= head;
+			for(int i = 0 ; i < index ; ++i){
+				x=x.next;
+			}
+			Node<E> y= head; //새로추가될 노드의 prev노드 위치
+			for(int i = 0 ; i < index-1 ; ++i){
+				y=y.next;
+			}
+			
+			newNode.prev = y ; //새로 삽입될 데이터에 이전의 노드의 prev 넣어준다.
+			newNode.next = x; // 새로운 노드의 다음은 이전에 있던 노드의 위치
+			x.prev = newNode; // 이전에 있던 노드의 prev는 추가된노드
+			y.next = newNode; // 이전에 있던 노드의 prev의 다음 노드는 새로운 노드.
+			
+		}
+		
+		size++;
 	}
 
 	@Override
@@ -39,8 +71,44 @@ public class DoublyLinkedList<E> implements List<E> {
 
 	@Override
 	public E remove(int index) {
-
-		return null;
+		if (size < index) {
+			throw new IndexOutOfBoundsException();
+		}
+		Node<E> returnVal = null;
+		if(index == 0){//head 삭제
+			Node<E> x = head;
+			returnVal = x;
+			head = x.next;
+			x=null;
+			//head.prev=null;
+			
+		}else if(index==size-1){
+			Node<E> x = tail;
+			returnVal = x;
+			tail = x.prev;
+			x=null;
+			tail.next=null;
+		}else{
+			
+			//현재위치 찾기
+			Node<E> x= head; //현재위치보다 앞의 노드
+			for(int i = 0 ; i < index+1 ; ++i){
+				x=x.next;
+			}
+			returnVal = x.prev;
+			//System.out.println("현재위치:"+x.prev.data);
+			
+			Node<E> y= head; //현재위치보다 뒤의 노드
+			for(int i = 0 ; i < index-1 ; ++i){
+				y=y.next;
+			}
+			//뒤의 노드는 앞의 노드를 가리키고 앞의노드는 뒤의 노드를 가리킨다.
+			x.prev = y;
+			y.next = x;
+			
+		}
+		size--;
+		return returnVal.data;
 	}
 
 	@Override
@@ -71,6 +139,7 @@ public class DoublyLinkedList<E> implements List<E> {
 		while (x != null) {
 			arr[index++] = x.data;
 			x = x.next;
+			
 		}
 		return arr;
 	}
