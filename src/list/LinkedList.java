@@ -7,16 +7,18 @@ public class LinkedList<E> implements List<E> {
 
 	@Override
 	public void add(E element) {
-		Node<E> newNode = new Node<E>(element);
-
+		final Node<E> newNode = new Node<E>(element);
+		
 		if (head == null) {
 			head = newNode;
+			//head = tail = newNode;
 		} else {
 			Node<E> x = head;
 			while (x.next != null) {
 				x = x.next;
 			}
-
+			//tail.next= newNode;
+			//tail = newNode;
 			x.next = newNode;
 		}
 		size++;
@@ -29,13 +31,14 @@ public class LinkedList<E> implements List<E> {
 		}
 		if (index == 0) {
 			Node<E> newNode = new Node<E>(element);
-			Node<E> temp = head;
+			//Node<E> temp = head;
 			head = newNode;
 
-			newNode.next = temp;
+			//newNode.next = temp;
 
 		} else if (size == index) {
 			add(element);
+			return;
 		} else {
 			Node<E> x = head; // head는 현재위치
 			for (int i = 0; i < index - 1; ++i) {
@@ -66,6 +69,23 @@ public class LinkedList<E> implements List<E> {
 			throw new IndexOutOfBoundsException();
 		}
 		Node<E> temp=null;
+		
+//		E data =null;
+//		if(0==index){
+//			data = head.data;
+//			head = head.next;
+//		}else{//중간또는tail삭제
+//			Node<E> x =head;
+//			for(int i = 0 ; i < index -1; i++){
+//				x=x.next;
+//			}
+//			data = x.next.data;
+//			x.next = x.next.next;
+//			if(x.next =null){
+//				tail=x;
+//			}
+//		}
+		
 		if (index == size-1) {
 			// 현재위치
 			Node<E> x = head;
@@ -141,6 +161,19 @@ public class LinkedList<E> implements List<E> {
 			data = element;
 			this.next = next;
 		}
+	}
+
+	@Override
+	public Object[] toArray() {
+		Object[] arr = new Object[size];
+		Node<E> x =head;
+		int index = 0;
+		while(x!=null){
+			arr[index++] = x.data;
+			x=x.next;
+		}
+		
+		return arr;
 	}
 
 }

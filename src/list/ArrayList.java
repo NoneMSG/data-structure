@@ -100,4 +100,13 @@ public class ArrayList<E> implements List<E> {
 		return size;
 	}
 
+	@Override
+	public Object[] toArray() {
+		Object[] arr = new Object[size];
+		for(int i = 0 ; i < size ; i++){
+			arr[i] = data[i];
+		}
+		return arr;
+	}
+
 }
