@@ -11,9 +11,9 @@ public class LinkedListTest {
 		list.add(33);
 		list.add(44);
 		list.add(55);
-		list.add(0,1000);
+		list.add(4,1000);
 		
-		System.out.println("removed ele:"+list.remove(1));
+		//System.out.println("removed ele:"+list.remove(1));
 		
 		int count = list.size();
 //		System.out.println("리스트 크기: "+count);

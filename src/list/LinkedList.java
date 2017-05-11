@@ -1,5 +1,6 @@
 package list;
 
+
 public class LinkedList<E> implements List<E> {
 
 	private Node<E> head;
@@ -31,10 +32,10 @@ public class LinkedList<E> implements List<E> {
 		}
 		if (index == 0) {
 			Node<E> newNode = new Node<E>(element);
-			//Node<E> temp = head;
+			Node<E> temp = head;
 			head = newNode;
 
-			//newNode.next = temp;
+			newNode.next = temp;
 
 		} else if (size == index) {
 			add(element);
@@ -175,5 +176,13 @@ public class LinkedList<E> implements List<E> {
 		
 		return arr;
 	}
+
+	@Override
+	public Iterator<E> iterator() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 
 }

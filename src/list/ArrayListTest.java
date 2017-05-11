@@ -29,6 +29,13 @@ public class ArrayListTest {
 		for(int i = 0 ; i<list.size();++i){
 			System.out.println(i+"___"+list.get(i));
 		}
+		
+		//사용자가만든 iterator 반복자를 통한 리스트 순회
+		Iterator<Integer> it = list.iterator();
+		while(it.hasNext()){
+			int i = it.next(); //auto unboxing
+			System.out.println(i);
+		}
 		//System.out.println(list.size());
 //		//add연산
 //		list.add(11);

@@ -1,5 +1,6 @@
 package list;
 
+
 public class ArrayList<E> implements List<E> {
 	
 	private static final int INIT_CAPACITY = 10;
@@ -108,5 +109,29 @@ public class ArrayList<E> implements List<E> {
 		}
 		return arr;
 	}
+	
+	
+	
+	@Override
+	public Iterator<E> iterator() {
+		//return anonymous class, 일회용 클래스
+		return new Iterator<E>(){
+			private int index = 0;
+			
+			@Override
+			public boolean hasNext() {
+				return index < size;
+			}
+
+			@Override
+			public E next() {
+				return data[index++];
+			}
+			
+		};
+	}
+
+	
 
 }
+ 
