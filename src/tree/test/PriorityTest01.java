@@ -19,8 +19,8 @@ public class PriorityTest01 {
 								//0의 경우는 같다고 판단.
 								return arg0.length()-arg1.length();
 							} 
-							
-				});  
+				}); 
+			
 		pq.offer("A");
 		pq.offer("ABCD");
 		pq.offer("ABC");
